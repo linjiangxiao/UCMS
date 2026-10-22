@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>栏目网址规则配置-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;			<h1>栏目网址规则配置</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	如果您不使用伪静态,网址类型为http://<span style="white-space:normal;">xxx.com</span>/index.php/lanmu
+</p>
+<p>
+	配置伪静态后网址可以为<span style="white-space:normal;">http://xxx.com/lanmu[<a href="6.html" target="_blank">如何开启伪静态</a>]</span> 
+</p>
+<p>
+	<span style="white-space:normal;">您也可以随意使用中文网址,如:<span style="white-space:normal;">http://xxx.com/中文栏目网址</span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><br />
+</span></span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	当访客访问的网址匹配到规则后会访问相应的模板文件.
+</p>
+<p>
+	每个栏目都允许增加多个页面,对应多个模板.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style="font-size:16px;">后台(栏目页面/自定义页面)填写说明</span></strong> 
+</p>
+<p>
+	<strong>栏目地址/分页地址/文章地址/页面地址:</strong>网址匹配规则
+</p>
+<p>
+	<span style="white-space:normal;"> </span>增加栏目时默认的/(cid)/代表/栏目编号/,如当您访问 /1/ 时 会载入栏目1的模板文件.<br />
+<span style="white-space:normal;"> </span>您可以将栏目内的/(cid)/更改为 /cscscs/,当访问 /cscscs/ 时,会显示该栏目内容.<span style="white-space:normal;">会载入这个栏目的模板文件.</span><br />
+<span style="white-space:normal;"> </span>(cid)为系统自带标签,系统会自动区分.如果多个栏目都设置了匹配规则为/cscscs/,则只能访问到第一个栏目.
+</p>
+<p>
+	<span style="white-space:normal;"> <span style="white-space:normal;"> 可以填入多个网址如:/123/;/234/;/345/,访问到这3个网址时,都能匹配到当前规则.</span></span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>页面缓存时间: </strong> 
+</p>
+<p>
+	此网址的缓存时间,在缓存时间段内,直接输出上次缓存的结果,不会进行数据库查询等操作,提高页面执行速度.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>模板文件:</strong> 
+</p>
+<p>
+	<span style="white-space:normal;"> </span>可以填写多个文件名,使用;分隔,如top.php;list.php;bottom.php&nbsp;则页面会依次载入这3个模板文件.
+</p>
+<p>
+	<span style="white-space:normal;"> </span>文件名可以使用简写,如填入list,系统载入模板时会自动匹配到list.php.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="line-height:1.5;"><strong><br />
+</strong></span> 
+</p>
+<p>
+	<span style="line-height:1.5;font-size:16px;"><strong>网址匹配规则进阶</strong></span> 
+</p>
+<p>
+	<span style="line-height:1.5;font-size:16px;"><strong><br />
+</strong></span> 
+</p>
+<p>
+	<strong>配置格式为:/lanmu/(id).html 则访问 /lanmu/任何数字.html 均会匹配到该网址</strong> 
+</p>
+<p>
+	<b><span style="white-space:normal;">配置格式为:/lanmu/{title}.html 则访问 /lanmu/任何文字数字.html 均会匹配到该网址</span><br />
+</b> 
+</p>
+<p>
+	<b>()代表匹配数字</b> 
+</p>
+<p>
+	<b>{}代表匹配任何文字</b> 
+</p>
+<p>
+	<b>()或{}中的字母代表get的参数名,</b> 
+</p>
+<p>
+	<b>如配置网址为/lanmu/(id).html,当您访问/lanmu/1.html时,在模板文件中$_GET['id']值等于1</b> 
+</p>
+<p>
+	<b><br />
+</b> 
+</p>
+<p>
+	<b><span style="font-size:16px;">高级</span></b> 
+</p>
+<p>
+	<b><span style="font-size:16px;"><br />
+</span></b> 
+</p>
+<p>
+	<b><span style="font-size:16px;"><span style="font-size:12px;">如何实现文章的中文网址:</span><br />
+</span></b> 
+</p>
+<p>
+	<b>配置文章地址为: /(cid)/{title},文章列表函数输出文章地址时,文章网址将变成<b style="white-space:normal;">/1/文章名字</b></b> 
+</p>
+<p>
+	<b>在模板文件中<b style="white-space:normal;">$_GET['title']</b>的值就是该文章的标题名,查询出相应的文章即可.</b> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="white-space:normal;"><br />
+</span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><br />
+</span></span> 
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

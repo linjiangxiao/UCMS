@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>alist函数参数详细介绍-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;<a href="27.html">输出文章列表</a>&gt;			<h1>alist函数参数详细介绍</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	alist()函数的参数与a()函数的参数一致,只不过a()只输出一篇文章,
+</p>
+<p>
+	alist返回的文章列表在返回的数组['list']中,a()返回的直接是文章的字段.
+</p>
+<p>
+	1.3.5版本起才支持获取子栏目的文章
+</p>
+以下是函数参数的基本用法
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+unset($set);//初始化$set参数,防止同一个页面存在多个$set造成混乱
+$set['cid']='1';//栏目cid或栏目名
+//获得此栏目与子栏目的文章列表,栏目数据库表须相同,不同的则不会获取
+$set['cids']='1;2;3;4';
+//从栏目1,2,3,4中获得文章列表,这些栏目的表须相同
+//如果定义了$set['cid']则只会获取该cid下的下属栏目1,2,3,4
+$set['all']='1';//是否获取子栏目的文章,默认为1,为0则只获取本栏目的文章
+$set['order']='aorder desc,id desc';//输出文章的排序方式,默认为后台设置中的默认排序方式
+$set['tablename']='article';//选择文章栏目的数据库表,默认为后台设置中的栏目表名
+$set['domain']='';//如果一个栏目有多个域名,则可以设置此参数指定域名,默认为栏目域名中的第一个
+//分页模板页面使用此代码,可以进行分页
+$set['page']=page //1.3.5版本开始支持 获得$_GET中的page进行分页
+//老版本请使用以下代码
+if (!isset($_GET['page'])){$set['page']=1;}else{$set['page']=intval($_GET['page']);}
+$set['pagesize']=10;//输出文章的数量,如果无此参数则默认为后台设置中的默认显示数量
+$set['start']=0;//等同于mysql中[limit m,n]的m,pagesize则等同于n
+$set['cache']=0;//缓存时间,单位秒,此次取出的数据将被缓存直到数据过期
+$set['column']='id,title';//读取的字段,默认为*(全部),为了提升性能建议只取出所需要的列
+//是否对查询条件中的数值进行sql转义,0为关闭,1为开启(默认),如果你不能保证查询数据的安全,请不要关闭
+$set['addslashes']=1;
+//条件查询
+$set['where']['id']=1;//查询id为1的文章
+$set['where']['ifcheck']=1;//查询勾选的文章
+//也可以用数组的方式查询
+$set['where']['id']=array('1','2','3');//查询id为1或2或3的文章
+$set['inwhere']['kind']=array('1','2');//查询多选字段中,分类值为1和2的文章
+$set['nowhere']['id']=array('1','2');//查询id不为1和2的文章
+$set['other']='fid=1 and ifcheck=1';//其他条件,sql形式,此数据不会被转义,请确保数据安全性
+//获取所有子分类
+$set['where']['fid']=getkinds(3,12);//获取栏目3下文章id为12的分类下的所有分类
+//输出样式控制
+$set['rowstyle'][1]=' class=&quot;no&quot;';//第一个输出
+$set['stepstyle'][4]=' class=&quot;no&quot;';//每隔4个输出
+$set['rowidstyle'][1]='  class=&quot;no&quot;';//当id=1时输出样式
+$set['rowidname']='id';//定义id名称,默认为id 
+$articles=alist($set);
+//获取文章列表后,循环输出列表,$a['link']为文章的网址(系统保留字段)
+foreach ($articles['list'] as $a) 
+{
+	echo('&lt;a href=&quot;'.$a['link'].'&quot;&gt;'.$a['title'].'&lt;/a&gt;');
+	echo(text($a['content'],200));//使用text对内容进行截取
+}
+?&gt;</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

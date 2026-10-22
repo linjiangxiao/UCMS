@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>省市区数据-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>省市区数据</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	下载文件并解压:<a class="ke-insertfile" href="../images/area.zip" target="_blank">省市区数据与栏目配置</a> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	后台&gt;站点管理&gt;导入栏目&gt;导入配置文件&nbsp; 选择 "地区列表配置.txt"&nbsp; 提交后&nbsp;确认导入.
+</p>
+<p>
+	<span style="white-space:normal;">记住新导入的栏目cid.</span> 
+</p>
+<p>
+	修改fid字段数据来源为&nbsp;本栏目的&nbsp;title[标题] 字段.
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	进入数据库管理软件(phpmyadmin等),进入ucms数据库&nbsp;导入ucms_area.sql.
+</p>
+<p>
+	批量修改&nbsp;ucms_area表内的cid&nbsp;为 <span style="white-space:normal;">新导入的栏目cid.</span> 
+</p>
+<p>
+	<br />
+</p>
+<pre class="brush:php prettyprint lang-php" data-language="php">update ucms_area set cid='新导入的栏目cid' where cid='1'</pre>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

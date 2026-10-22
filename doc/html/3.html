@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>模板制作指南-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;			<h1>模板制作指南</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	UCMS默认模板目录位于/template文件夹下面,可以在配置文件<span style="white-space:normal;">[inc/config.php]</span>中修改此目录名字.
+</p>
+<p>
+	手机版目录位置/template/m,当系统判断访客的浏览器为手机版本时会引入手机版本的模板
+</p>
+<p>
+	程序支持绑定手机站域名,访问手机站域名时自动载入手机模板
+</p>
+<p>
+	<br />
+</p>
+<p>
+	1.4.7版本开始默认的模板标签从{}改成{{}}
+</p>
+<p>
+	模板中也支持php语法,复杂的语法模板引擎无法解析,请使用php<span style="white-space:normal;">语法</span> 
+</p>
+<p>
+	注意{{***}}会被模板引擎解析成其他语句,如您使用的html或js语法中有{{}},请将{{}}换行使用,或者在配置文件中修改模板的开始结束标记
+</p>
+<p>
+	<br />
+</p>
+<p>
+	模板调试模式(1.4.7版本新加入):配置文件中,将TemplateDebug改成1,即可开启,查看前台网页源文件,可以看到当前页面的cid和所载入的模板页面,方便快速查找所需的文件
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="color:#FF6600;">请不要用windows自带的记事本编辑php文件,具体介绍请搜索&nbsp;php&nbsp;记事本&nbsp;bom头</span> 
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+		<li><a href="41.html" target="_blank">常用语法</a></li><li><a href="23.html" target="_blank">输出站点变量/栏目变量</a></li><li><a href="24.html" target="_blank">获取栏目的网址</a></li><li><a href="25.html" target="_blank">输出栏目导航</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="75.html" target="_blank">下属栏目列表自定义</a></li><li><a href="68.html" target="_blank">获取栏目、父栏目、顶级栏目的信息</a></li><li><a href="26.html" target="_blank">输出当前所在位置(面包屑导航)</a></li><li><a href="27.html" target="_blank">输出文章列表</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="28.html" target="_blank">alist函数参数详细介绍</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="29.html" target="_blank">输出文章列表分页</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="30.html" target="_blank">同时获取多个栏目的文章列表</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="63.html" target="_blank">文章随机调用</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="66.html" target="_blank">获取栏目文章总数</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="73.html" target="_blank">文章列表样式输出</a></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="81.html" target="_blank">文章排序</a></li><li><a href="31.html" target="_blank">前台文章增加修改删除</a></li><li><a href="38.html" target="_blank">多图输出</a></li><li><a href="40.html" target="_blank">特殊字符转义</a></li><li><a href="64.html" target="_blank">uri网址链接</a></li>		</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

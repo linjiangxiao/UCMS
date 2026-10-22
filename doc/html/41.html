@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>常用语法-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>常用语法</h1>
+		</div>
+		<div class="article_content">
+		<pre class="brush:php prettyprint lang-php" data-language="php">{{homeurl}} 首页网址
+{{host}} 当前域名
+{{ucmsdir}} ucms安装目录
+{{tempdir}} 模板目录,如您需在页面中引用模板目录中的样式文件style.css,则引用路径为 {{tempdir}}css/style.css
+
+常用语法:
+{{hello world}} 输出字符串hello world
+{{$a=hello world}} 将变量a的值改为hello world,每个变量前请使用$符号(shift+4)
+{{$a}} 输出变量a的值
+
+使用函数:
+{{123ucms|intval()}} 将值123ucms使用intval函数输出,输出结果为:123
+{{$a=123ucms|intval()}} 将变量a的值改为 123ucms使用intval函数后的结果
+函数支持用|多个连接,如:{{123ucms|intval()|text(2)}}
+您可以使用常用的php函数,如:substr,strlen,str_replace,explode,implode
+str_replace演示:{{$a=123ucms|intval()|str_replace(1,2,this)}}
+函数默认的参数放在第一个,如需放在其他位置,则使用this代替
+如{{123ucms|text(this,1)}}则可以简写为{{123ucms|text(1)}}
+
+包含文件
+{{file top.php}} 引入模板目录中的top.php,如您不加上后缀.php,如{{file top}}则等同于{{file top.php}}
+注:引入的模板位置是相对于模板目录的,如手机站首页需要引入手机站的top.php则为{{file m/top}}
+
+if语法(具体请参考PHP if...else...elseif 语句)
+{{$a=1}}
+{{if $a==1}}
+a的值为1
+{{elseif $a==2}}
+a的值为2
+{{else}}
+a的值为其他
+{{/if}}
+
+loop语法(具体请参考PHP foreach 循环)
+{{$a=u,c,m,s|explode('\,',this)}}
+{{loop $a as $i}}
+{{$i}}/
+{{/loop}}</pre>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

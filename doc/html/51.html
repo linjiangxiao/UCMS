@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>导航二级栏目列表-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>导航二级栏目列表</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	导航条二级栏目输出
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$channels=c(0,999,0)}}
+{{loop $channels as $channel}}
+    &lt;a href=&quot;{{$channel['url']}}&quot; class=&quot;{{$channel['onstyle']}}&quot;&gt;{{$channel['name']}}&lt;/a&gt; :
+   {{$channels2=c(0,999,$channel['cid'])}}
+   {{loop $channels2 as $channel2}}
+        &lt;a href=&quot;{{$channel2['url']}}&quot; class=&quot;{{$channel2['onstyle']}}&quot;&gt;{{$channel2['name']}}&lt;/a&gt; 
+   {{/loop}}&lt;br&gt;
+{{/loop}}
+
+//如果需要判断栏目设置成是否显示在导航 则需要加判断
+{{if $channel['ifshownav']}}
+ &lt;a href=&quot;{{$channel['url']}}&quot; class=&quot;{{$channel['onstyle']}}&quot;&gt;{{$channel['name']}}&lt;/a&gt; 
+{{/if}}
+
+
+//判断是否存在二级栏目
+{{$channels2=c(0,999,$channel['cid'])}}
+{{if count($channels2)}}
+    xxxx
+{{/if}}
+
+二级栏目也需要判断 把上面代码中的$channel换成$channel2即可
+1.4.1版本开始c函数支持只列出显示在导航栏的栏目,
+如:{{$channels=c(0,999,0,1)}},第四个参数 填写1则只列出显示在导航栏的栏目,
+不再需要判断$channel['ifshownav']
+
+
+
+
+//加上首页判断
+
+{{if cid==0}}
+&lt;a href=&quot;/&quot; class=&quot;on&quot;&gt;首页&lt;/a&gt;
+{{else}}
+&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;
+{{/if}}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

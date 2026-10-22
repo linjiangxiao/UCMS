@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>文件上传-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;<a href="53.html">表单提交,留言板功能</a>&gt;			<h1>文件上传</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	下载扩展文件 <a class="ke-insertfile" href="../images/upload.zip" target="_blank">upload.zip</a> 解压后,将<strong>upload.php</strong>放到网站inc目录下
+</p>
+<p>
+	表单代码:
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;form method=post action=&quot;&quot; enctype=&quot;multipart/form-data&quot;&gt;
+	&lt;input type=&quot;file&quot; name=&quot;pic&quot;&gt;
+	&lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</pre>
+</p>
+<p>
+	上传处理代码:
+</p>
+<p>
+	<span style="white-space:normal;"><pre class="brush:php prettyprint lang-php" data-language="php">{{class upload}}
+{{$upload_pic=uploadfile('pic')}}
+{{$upload_pic['file']}}
+
+如果需要用在表单保存里面:
+{{$upload_pic=uploadfile('pic')}}
+{{$newarticle['pic']=$upload_pic['file']}}
+
+判断出错信息:
+{{$upload_pic=uploadfile('pic')}}
+{{if empty($upload_pic['error'])}}
+    上传成功 {{$upload_pic['file']}}
+{{else}}
+    上传失败 {{$upload_pic['error']}}
+{{/if}}
+
+uploadfile函数参数:
+
+uploadfile($name,$max_size,$kind,$filedir)
+
+$name 表单名 
+$max_size 最大文件大小 单位Kb
+$kind 文件上传种类限制 image media file 想要更多的种类可以在upload.php里面修改
+$filedir 自定义文件保存的文件夹 需要用/结尾
+
+</pre></span>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

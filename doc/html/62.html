@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>文章内容分页-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>文章内容分页</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	<span style="white-space:normal;">使用kindeditor的分页按钮代码来分割文章内容</span> 
+</p>
+<p>
+	<span style="white-space:normal;"><img src="../images/f333456ec.png" alt="" /><br />
+</span> 
+</p>
+<p>
+	<span style="white-space:normal;"><pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+$contents=explode('&lt;hr style=&quot;page-break-after:always;&quot; class=&quot;ke-pagebreak&quot; /&gt;',$article['content']);
+if(isset($_GET['p'])) {
+	if(isset($contents[$_GET['p']])) {
+		echo($contents[$_GET['p']]);
+	}else {
+		echo('不存在该分页');
+	}
+}else {
+	echo($contents[0]);
+}
+foreach($contents as $key=&gt;$val) {
+	echo('&lt;a href=&quot;?p='.$key.'&quot;&gt;'.($key+1).'&lt;/a&gt;');
+}
+?&gt;　</pre></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><br />
+</span> 
+</p>
+<p>
+	如需使用伪静态分页网址
+</p>
+<p>
+	需在该文章栏目中增加一个"其他页面",页面地址可以设置为&nbsp;/(cid)/(id)_(p).html
+</p>
+<p>
+	分页循环代码改成下面的代码
+</p>
+<pre class="brush:php prettyprint lang-php" data-language="php">foreach($contents as $key=&gt;$val) {
+	echo('&lt;a href=&quot;/'.$article['cid'].'/'.$article['id'].'_'.$key.'.html&quot;&gt;'.($key+1).'&lt;/a&gt;');
+}</pre>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

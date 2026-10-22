@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>404错误-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="1.html">安装配置</a>&gt;			<h1>404错误</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	<span style="line-height:1.5;">404错误常见解决办法</span>
+</p>
+<p>
+	<strong>1</strong>,<strong>绑定域名错误</strong>,当前域名尚未在配置文件中绑定,请到inc/config.php中绑定域名,留空则默认绑定所有域名,域名不需要加上http
+</p>
+<p>
+	<strong>2,网站程序目录未填正确</strong>,请在<span style="white-space:normal;">inc/config.php修改程序的安装目录,根目录则填写/,子目录必须以/开始结束,如 :/a/</span> 
+</p>
+<p>
+	<span style="white-space:normal;"><strong>3,伪静态规则失效</strong>,请确认服务器是否支持伪静态,并修改<span style="white-space:normal;">inc/config.php中的伪静态的开启关闭状态,如您安装在子目录中,请关闭伪静态</span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><strong style="white-space:normal;">4,手机站域名 </strong>如果您的SystemDomain 填写了具体绑定的域名 请将手机站的域名也加入到SystemDomain 内,否则无法访问手机站</span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><strong>5,栏目网址配置出错,</strong>文章栏目等栏目的文章地址不要填写成/{title},这样会将所有页面都解析到该规则下,使用/(cid)/{title}/这样加以区分</span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><br />
+</span></span>
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><strong style="white-space:normal;"><strong style="font-size:16px;white-space:normal;">修改配置后请在后台"清空缓存",再检查是否可以访问</strong></strong></span></span>
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;"><strong style="white-space:normal;"><br />
+</strong></span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;">如何自定义404页面:</span></span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="white-space:normal;">在模板目录中新建404.php文件,如在访问页面时出现404错误时,会自动读取此文件夹内的内容,支持模板语法与php语法</span></span> 
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

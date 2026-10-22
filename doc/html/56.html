@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>文章采集-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>文章采集</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	<a href="../images/cai.zip" target="_blank">请先下载发布模块 </a> 
+</p>
+<p>
+	下载后解压,将post.php文件放在UCMS网站根目录下,建议将post.php重命名为不容易猜到的文件名
+</p>
+<p>
+	<br />
+</p>
+<p>
+	目前只支持火车头与EditorTools,<span style="white-space:normal;">发布模块需手动导入到采集软件内</span> 
+</p>
+<p>
+	发布模块支持标题 内容 如需其他字段,需自己在采集软件内添加
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="font-size:16px;">已知错误:时间字段默认值now不能解析为当前时间(1.4.2已修复)</span>
+</p>
+<p>
+	<span style="font-size:16px;">需手动在post.php里面编辑时间 如:</span><span style="font-size:16px;">$article['shijian']=time();</span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	如您的内容字段需要支持html代码 请在字段配置中设置允许html代码
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>UCMS性能优化-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="1.html">安装配置</a>&gt;			<h1>UCMS性能优化</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	<span style="line-height:1.5;font-size:18px;"><span style="font-size:14px;">UCMS在不进行配置的情况下也拥有不错的性能,如您的站点访问量高,可以从以下几个方面进行性能优化</span><br />
+</span> 
+</p>
+<p>
+	<span style="line-height:1.5;font-size:18px;"><br />
+</span> 
+</p>
+<p>
+	<span style="line-height:1.5;font-size:18px;">inc/config.php文件配置:</span> 
+</p>
+<p>
+	<span style="line-height:1.5;">define('SiteCache',1);//开启站点缓存,所有的缓存都依据此参数,如果关闭了,则其他缓存均不会生效<br />
+</span> 
+</p>
+<p>
+	<span style="line-height:1.5;">define('TemplateTime',0);//模板缓存时间,如果不常改模板,建议将0设置为2592000,模板文件将缓存一个月</span> 
+</p>
+<p>
+	<span style="line-height:1.5;">define('IndexCache',0);//首页缓存时间,如果站点更新不频繁,建议设置为一个较大的值,能够有效提升性能</span> 
+</p>
+<p>
+	<span style="line-height:1.5;">define('WapOpen',1);//如果您的站点没有手机版,请将1设置成0</span> 
+</p>
+<p>
+	<span style="font-size:18px;">后台配置:</span> 
+</p>
+<p>
+	<span style="font-size:18px;"><span style="font-size:12px;">增加栏目页面时请将设置页面缓存时间,可以有效<span style="white-space:normal;">提升性能</span></span><br />
+</span> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="font-size:18px;">模板:</span> 
+</p>
+<p>
+	<span style="font-size:18px;"><span style="font-size:12px;">使用alist显示文章列表时,请指明具体需要的字段名,默认是查询出所有的字段</span><br />
+</span> 
+</p>
+<p>
+	alist查询出的结果也是支持缓存的,可以设置缓存时间
+</p>
+<p>
+	<span style="font-size:12px;"><br />
+</span> 
+</p>
+<p>
+	<span style="font-size:16px;">千万级文章优化方法:</span> 
+</p>
+<p>
+	<span style="font-size:12px;">sqlite也支持千万级别的文章数量,访问量高的话,不建议使用sqlite.</span> 
+</p>
+<p>
+	<span style="font-size:16px;"><span style="font-size:12px;">mysql请使用innodb类型,默认安装使用的是MyISAM,请在安装前修改/inc/config.php文件,将MysqlEngine值修改为InnoDB.</span></span> 
+</p>
+<p>
+	<span style="font-size:16px;"><span style="font-size:12px;">如果已经安装为了</span><span style="font-size:12px;white-space:normal;">MyISAM类型,</span><span style="font-size:12px;">请进数据库修改需要优化的文章表类型.</span></span> 
+</p>
+<p>
+	<span style="font-size:16px;"><span style="font-size:12px;"><strong>为</strong></span><span style="font-size:12px;"><strong>cid字段建立索引</strong>,如果用到了另外的查询条件,排序等,也需要为这些字段建立索引.</span></span> 
+</p>
+<p>
+	<span style="font-size:12px;">高并发下请使用缓存优化响应速度,不同类型的栏目尽量使用不同的表.</span> 
+</p>
+<p>
+	<span style="font-size:12px;">(注:1.4.5之前的版本并不支持此方法)</span> 
+</p>
+<p>
+	<span style="font-size:16px;"><span style="font-size:12px;"></span><br />
+</span> 
+</p>
+<p>
+	<span style="font-size:16px;"><br />
+</span> 
+</p>
+<p>
+	<span style="line-height:1.5;"><br />
+</span> 
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

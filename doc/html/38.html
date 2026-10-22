@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>多图输出-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>多图输出</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	栏目变量中的多图或者栏目字段中的多图输出方法:
+</p>
+<p>
+	多图的数据是经过json_encode格式化过的数据,要输出数据需将json数组转成数组,然后再遍历输出
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$pics=z(多图变量名)|json_decode(1)}}
+{{loop $pics as $pic}}
+&lt;img src=&quot;{{$pic}}&quot;&gt;
+{{/loop}}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

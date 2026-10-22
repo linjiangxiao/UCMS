@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理员密码重置-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;			<h1>后台管理员密码重置</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	将以下代码保存为任意文件名.php 到<strong>网站目录<span style="white-space:normal;">下</span>(</strong>不是模板目录<strong>)</strong>,访问后此文件后,admin密码将自动更改为六位数字
+</p>
+<p>
+	如需更改<span style="white-space:normal;">其他</span>管理员密码,请将代码中的第二个admin改成其他管理员名字
+</p>
+<p>
+	更改密码成功后,请将此文件删除
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+require('inc/config.php');
+$psd=rand(100000,999999);
+$query = $GLOBALS['db'] -&gt; query(&quot;UPDATE &quot;.tableex('admin').&quot; 
+    SET psd='&quot;.password_md5($psd).&quot;' WHERE username='admin'&quot;);
+if($query) {
+	die('new password:'.$psd);
+}else {
+	die('error');
+}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Markdown编辑器字段介绍-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;<a href="21.html">字段介绍</a>&gt;			<h1>Markdown编辑器字段介绍</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	markdown编辑器字段,默认后台未安装markdown字段文件,<a href="../images/markdown.zip" target="_blank">请先下载</a> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	将压缩包内的文件上传到 网站目录
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style="font-size:14px;">新版本</span></strong> 
+</p>
+<p>
+	直接保存markdown代码到数据库中,不再保存html代码
+</p>
+<p>
+	前端调用,需要自己解析markdown代码
+</p>
+<p>
+	如:
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{class markdown}}
+{{z(md)|markdown()}}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<p style="white-space:normal;">
+		<strong>1.3.7的版本</strong>:
+	</p>
+	<p style="white-space:normal;">
+		该字段内容保存格式为 json格式,与其他字段格式不兼容
+	</p>
+	<p style="white-space:normal;">
+		字段内容转换成数组后(具体转换代码请点击栏目字段列表"调用")
+	</p>
+	<p style="white-space:normal;">
+		markdown中保存了markdown代码
+	</p>
+	<p style="white-space:normal;">
+		html中保存了markdown代码对应的html代码base64转换后的代码
+	</p>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>1.3.7=&gt;1.3.8前台调用兼容代码</strong> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$str=json_decode($article['content'],1)}}
+{{if empty($str)}}
+	{{class markdown}}
+	{{$article['content']|markdown()}}
+{{else}}
+	{{$markdown_array=$article['content']|json_decode(1)}}
+	{{$markdown_array['html']|base64_decode()}}{{//输出html}}
+	{{$markdown_array['markdown']}}{{//输出markdown代码}}
+{{/if}}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

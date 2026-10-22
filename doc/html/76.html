@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>自定义字段-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;<a href="21.html">字段介绍</a>&gt;			<h1>自定义字段</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	ucms1.4.3新增自定义字段功能
+</p>
+<p>
+	<span style="white-space:normal;">字段类型默认为varchar,如果需要修改成其他类型,请通过数据库工具手动修改</span> 
+</p>
+<p>
+	新增<span style="white-space:normal;">自定义字段后,配置该字段,在字段配置中填入函数名,函数代码可以参考以下代码</span> 
+</p>
+<p>
+	代码可以放在ucms/<span style="color:#333333;font-family:" white-space:normal;background-color:#f5f5f5;"="">admin_config.php</span>中
+</p>
+<p>
+	演示:
+</p>
+<p>
+	<strong>自定义输入框</strong> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">function diy_text($action='',$name='',$value='') {
+    //output用在显示表单的时候
+    if($action=='output') {
+        echo('&lt;input type=&quot;text&quot; name=&quot;'.$name.'&quot;  value=&quot;'.$value.'&quot; class=&quot;inputtext&quot;&gt;');
+    }
+    //接收表单
+    if($action=='input') {
+        if(isset($_POST[$name])) {
+            Return $_POST[$name];
+        }
+        Return '';
+    }
+    //后台文章列表页显示,或者前台显示
+    if($action=='show') {
+        Return $value;
+    }
+}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p style="white-space:normal;">
+	<strong>自定义列表框</strong> 
+</p>
+<p style="white-space:normal;">
+	<pre class="brush:php prettyprint lang-php" data-language="php">function diy_select($action='',$name='',$value='') {
+    $option=array('红','橙','黄','绿','青','蓝','紫');
+    if($action=='output') {
+        echo('&lt;select name=&quot;'.$name.'&quot;&gt;');
+        echo('&lt;option value=&quot;&quot;&gt;未选择&lt;/option&gt;');
+        foreach($option as $val) {
+            if($value==$val) {
+                echo('&lt;option value=&quot;'.$val.'&quot; selected&gt;'.$val.'&lt;/option&gt;');
+            }else {
+                echo('&lt;option value=&quot;'.$val.'&quot;&gt;'.$val.'&lt;/option&gt;');
+            }
+        }
+        echo('&lt;/select&gt;');
+    }
+    if($action=='input') {
+        if(isset($_POST[$name]) &amp;&amp; in_array($_POST[$name],$option)) {
+            Return $_POST[$name];
+        }
+        Return '';
+    }
+    if($action=='show') {
+        Return $value;
+    }
+}</pre>
+</p>
+<p style="white-space:normal;">
+	<br />
+</p>
+<p style="white-space:normal;">
+	<strong>自定义<span style="white-space:normal;">多选框</span></strong> 
+</p>
+<p style="white-space:normal;">
+	<pre class="brush:php prettyprint lang-php" data-language="php">function diy_checkbox($action='',$name='',$value='') {
+    $option=array('红','橙','黄','绿','青','蓝','紫');
+    //将数据库中的json数据转换成数组
+    $values=json_decode($value,1);
+    if($action=='output') {
+        //需要插入一个隐藏的输入框,接收表单时删除第一个元素,否则程序无法获得勾选的值
+        echo('&lt;input type=&quot;hidden&quot; name=&quot;'.$name.'[]&quot; value=&quot;&quot;&gt;');
+        foreach($option as $val) {
+            if(is_array($values) &amp;&amp; in_array($val,$values)) {
+                echo('&lt;input type=&quot;checkbox&quot; name=&quot;'.$name.'[]&quot; value=&quot;'.$val.'&quot; checked&gt;'.$val.'&amp;nbsp;');
+            }else {
+                echo('&lt;input type=&quot;checkbox&quot; name=&quot;'.$name.'[]&quot; value=&quot;'.$val.'&quot;&gt;'.$val.'&amp;nbsp;');
+            }
+        }
+        Return '';
+    }
+    if($action=='input') {
+        $newarray=array();
+        if(isset($_POST[$name])) {
+            unset($_POST[$name][0]);//删除第一个隐藏的空值
+            foreach($_POST[$name] as $val) {
+                if(in_array($val,$option)) {
+                $newarray[]=$val;
+                }
+            }
+            //将数据以json形式存入数据库
+            Return json_encode($newarray);//php5.4+版本才支持此参数,防止中文被转义
+        }else {
+            Return json_encode(array());
+        }
+    }
+    if($action=='show') {
+        if(is_array($values) &amp;&amp; count($values)&gt;0) {
+            Return implode('|',$values);
+        }else {
+            Return '无';
+        }
+    }
+}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+		<li><a href="79.html" target="_blank">自定义百度ueditor编辑器字段</a></li>		</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

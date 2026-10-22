@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>下属栏目列表自定义-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;<a href="25.html">输出栏目导航</a>&gt;			<h1>下属栏目列表自定义</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	ucms1.4.2版本开始支持自定义某个栏目下的下属栏目列表
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+$GLOBALS['nav']['1']=array(
+	array('name'=&gt;'子栏目1','url'=&gt;'test1'),
+	array('name'=&gt;'子栏目2','url'=&gt;'test2'),
+);
+?&gt;</pre>
+</p>
+<p>
+	将上面的代码保存到默认模板文件header.php n函数之前,访问栏目1时,下属栏目将自定义为子栏目1,子栏目2
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+$test_channels=kindlist('需要自定义的栏目名','文章来源栏目名');
+$GLOBALS['nav']['需要自定义的栏目cid']=$test_channels;
+function kindlist($topcid,$cid) {
+   $set['cid']=$cid;
+   $articles=alist($set);
+    foreach($articles['list'] as $key=&gt;$val) {
+        if(defined('cid') &amp;&amp; cid==$topcid &amp;&amp; isset($_GET['fid']) &amp;&amp; $_GET['fid']==$val['id']) {
+            $navlist[]=array('url'=&gt;u($topcid).'?fid='.$val['id'],'name'=&gt;$val['title'],'onstyle'=&gt;&quot; class=\&quot;on\&quot;&quot;);
+        }else {
+            $navlist[]=array('url'=&gt;u($topcid).'?fid='.$val['id'],'name'=&gt;$val['title'],'onstyle'=&gt;&quot;&quot;);
+        }
+    }
+    Return $navlist;
+}
+?&gt;</pre>
+</p>
+<p>
+	上面的代码可以将一个栏目的文章当成另一个栏目下的子栏目
+</p>
+<p>
+	可以配合栏目网址自定义实现伪静态
+</p>
+<p>
+	<br />
+</p>
+<p>
+	请将自定义下属栏目的代码放到模板代码中的n函数或c函数之前,这样才能生效.
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>输出栏目导航-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>输出栏目导航</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	使用以下代码可以方便的输出栏目列表
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{n()}}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	可以使用以下代码获取导航列表数组后输出
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}
+{{$set['cid']=`cid}}
+{{$set['returnarray']=1}}
+{{$nav=n($set)}}
+{{loop $nav as $a}}
+&lt;li {{$a['onstyle']}}&gt;&lt;a href=&quot;{{$a['url']}}&quot;&gt;{{$a['name']}}&lt;/a&gt;&lt;/li&gt;
+{{/loop}}</pre>
+</p>
+<p>
+	n()函数支持传入数组设置
+</p>
+<p>
+	数组参数如下
+</p>
+<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+unset($set);
+$set['cid']=cid;//栏目也左侧显示下属栏目
+$set['cid']=[1,2,3];//以数组方式传入cid,列出这些栏目
+$set['onstyle']='style=&quot;color:#FF0000&quot;';
+$set['bro']=1;//默认如果无下属栏目,则显示兄弟栏目
+$set['papa']=1;//默认显示父栏目
+$set['returnarray']=1;//以数组的形式返回栏目列表,方便手动循环输出栏目
+//新定义首页名字链接,不想显示首页则$set['homepage']='';
+$set['homepage']['name']=&quot;首页&quot; ;
+$set['homepage']['url']=&quot;/&quot;;
+echo(n($set));
+?&gt;</pre>		</div>
+		<ul class="article_other">
+		<li><a href="75.html" target="_blank">下属栏目列表自定义</a></li>		</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

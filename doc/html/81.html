@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>文章排序-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;<a href="27.html">输出文章列表</a>&gt;			<h1>文章排序</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	按照id从大到小排序
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}
+{{$set['order']=id desc}}
+{{$articles=alist($set)}}
+{{loop $articles['list'] as $a}}
+    &lt;a href=&quot;{{$a['link']}}&quot;&gt;{{$a['title']}}&lt;/a&gt;
+{{/loop}}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	文章栏目可以设置默认排序方式,如果文章调用代码里面为设置排序代码,则会使用默认的排序方式
+</p>
+<p>
+	<br />
+</p>
+<p>
+	后台可以增加排序字段,建议文章排序是数字越大排越前面
+</p>
+<p>
+	一般文章列表常见的置顶,文章排序等功能都可以使用
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">//id从小到大
+{{$set['order']=id desc}}
+//id从大到小
+{{$set['order']=id asc}}
+
+//排序从大到小,并且id从大到小,aorder为排序字段名
+{{$set['order']=aorder desc,id desc}}
+
+//排序从小到大,并且id从大到小
+{{$set['order']=aorder asc,id desc}}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

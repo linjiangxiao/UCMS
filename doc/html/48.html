@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>文章搜索-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>文章搜索</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	只能搜索默认表的文章,或者指定cid的文章
+</p>
+<p>
+	<br />
+</p>
+<p>
+	在后台任意栏目新建一个其他页面 /search/ ,模板文件search.php
+</p>
+<p>
+	<img src="../images/e7f2d116b.png" alt="" width="600" height="34" title="" align="" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	搜索表单代码:
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;form method=get action=&quot;{{uri(/search/)}}&quot;&gt;
+	&lt;input type=&quot;text&quot; name=&quot;keyword&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;搜索&quot;&gt;
+&lt;/form&gt;</pre>
+</p>
+<p>
+	模板文件(<span style="white-space:normal;">search.php</span>)中文章查询代码:
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{if isset($_GET[&quot;keyword&quot;]) &amp;&amp; !empty($_GET[&quot;keyword&quot;])}}
+{{$set=array()}}
+{{$set['cid']=0}}
+{{$set['keyword']=$_GET[&quot;keyword&quot;]}}
+{{$articles=alist($set)}}
+{{loop $articles['list'] as $a}}
+    &lt;a href=&quot;{{$a['link']}}&quot;&gt;{{$a['title']}}&lt;/a&gt;
+{{/loop}}
+{{/if}}</pre>
+</p>
+<p>
+	如需分页,请参考模板助手中的分页代码
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

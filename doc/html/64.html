@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>uri网址链接-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>uri网址链接</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	使用uri函数可以自动在网站更换目录,启用停用伪静态后生成正确的网址,方便制作模板
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">//如不使用uri 以下链接会在网站更换网站目录或关闭伪静态后链接失效
+&lt;a href=&quot;/search/&quot;&gt;随便一个站内链接&lt;/a&gt;
+
+//使用uri后
+&lt;a href=&quot;{{uri(/search/)}}&quot;&gt;随便一个站内链接&lt;/a&gt;
+
+更换网站目录后会自动生成
+
+&lt;a href=&quot;/网站目录/search/&quot;&gt;随便一个站内链接&lt;/a&gt;
+
+关闭伪静态后会自动生成
+&lt;a href=&quot;/index.php/search/&quot;&gt;随便一个站内链接&lt;/a&gt;
+
+
+</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

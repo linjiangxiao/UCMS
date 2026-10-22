@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>特殊字符转义-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>特殊字符转义</h1>
+		</div>
+		<div class="article_content">
+		<p style="white-space:normal;">
+	<span style="font-size:14px;"><strong>特殊字符转义</strong></span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">模板引擎语法中为了防止输出某些字符串时会造成模板引擎解析错误,如需输出以下字符串,则需要进行转义</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">'单引号</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">=等号</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">,逗号</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">|竖杠</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">(前括号</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">)后括号</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">\斜杠</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">如需输出以上字符串,需在前面加上\,如</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">{$a='\='}</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">{$a}</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">会输出=号,否则将解析错误</span> 
+</p>
+<p style="white-space:normal;">
+	<span style="line-height:21px;">请勿在模板语法字符串中包含{或},可以用php原生语法代替</span> 
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

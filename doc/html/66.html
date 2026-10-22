@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>获取栏目文章总数-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;<a href="27.html">输出文章列表</a>&gt;			<h1>获取栏目文章总数</h1>
+		</div>
+		<div class="article_content">
+		<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}
+{{$set['cid']=栏目cid}}
+{{$set['pagesize']=999999999}}
+{{$set['column']=id}}
+{{$set['order']=id asc}}
+{{$articles=alist($set)}}
+文章总数:{{count($articles['list'])}}
+
+//如果不需要统计子栏目文章数量则在alist前加上{{ $set['all']='0';}}</pre>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>如何搭建一个友情链接栏目-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>如何搭建一个友情链接栏目</h1>
+		</div>
+		<div class="article_content">
+		<span style="font-size:24px;">(1).建立友情链接栏目,建立相应字段</span><br />
+<p>
+	使用管理员账号登陆后台,点击右上角的栏目管理,点击增加栏目
+</p>
+<p>
+	<img src="../images/2029ea3b5.png" alt="" width="400" height="216" title="" align="" /> 
+</p>
+<p>
+	添加好后默认会跳转到栏目的配置页面,对友情链接这个栏目进行设置
+</p>
+<p>
+	<strong>栏目数据库表</strong><strong>:友情链接与默认文章不是一个类型,建议改成另外的名字,不要使用默认的表</strong> 
+</p>
+<p>
+	<b>因为友情链接只需在首页显示,所以将前台设置中的"禁用该栏目勾上"</b> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	配置好栏目后,为友情链接栏目增加相应的字段
+</p>
+<p>
+	<span style="font-size:14px;color:#E53333;">title 网站标题,字段类型为:文本框</span> 
+</p>
+<p>
+	<span style="font-size:14px;color:#E53333;">url 网站链接,字段类型为:</span><span style="white-space:normal;font-size:14px;color:#E53333;">文本框</span> 
+</p>
+<p>
+	<span style="white-space:normal;"><span style="font-size:14px;color:#E53333;">ifshow </span></span><span style="font-size:14px;color:#E53333;">是否启用,</span><span style="white-space:normal;font-size:14px;color:#E53333;">字段类型为:</span><span style="font-size:14px;color:#E53333;">勾选框</span> 
+</p>
+<p>
+	<span style="font-size:14px;color:#E53333;">content 备注,字段类型为:多行文本</span> 
+</p>
+<p>
+	<span style="color:;">确认以上字段正确后,点击"保存并创建至数据库",所有字段将创建到栏目配置中的数据库表中.</span> 
+</p>
+<p>
+	点击右侧栏目列表中的"友情链接栏目",点击增加,相应的表单已经可以显示了
+</p>
+<p>
+	<img src="../images/41ea2f625.png" alt="" width="400" height="278" title="" align="" /> 
+</p>
+<p>
+	添加几个测试的友情链接,并在下一步中显示出来吧!
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<span style="font-size:24px;">(2).修改模板代码,输出友情链接列表</span> 
+</p>
+<p>
+	在默认的首页模板文件中显示链接列表
+</p>
+<p>
+	<img src="../images/018736db8.png" alt="" width="600" height="103" title="" align="" /> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	使用<a href="27.html" target="_blank">alist()函数</a>输出链接列表,使用下面的代码替换掉红色框内的代码
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}
+{{$set['cid']=友情链接栏目的名字或者栏目cid}}
+{{$set['pagesize']=10}}//友情链接显示的数量 
+{{$set['where']['ifshow']=1}}//只显示打勾的链接 
+{{$links=alist($set)}} 
+{{loop $links['list'] as $a}}
+&lt;li&gt;&lt;a href=&quot;{{$a['url']}}&quot; target=&quot;_blank&quot;&gt;{{$a['title']}}&lt;/a&gt;&lt;/li&gt;
+{{/loop}}</pre>
+</p>
+<p>
+	刷新您的首页,您刚添加的友情链接已经显示出来了(如果您设置了首页缓存时间则请在后台清空缓存)
+</p>
+<p>
+	<img src="../images/6f816d6d0.png" alt="" /> 
+</p>
+<p>
+	<span style="font-size:16px;background-color:#FFE500;">恭喜您已经完成了一个简单的栏目搭建!!!</span> 
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

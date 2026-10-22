@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>前台文章增加修改删除-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>前台文章增加修改删除</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	使用以下代码可以向某个栏目插入一篇文章
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+$article=array();
+$article['cid']='1';//栏目cid,如果不指定,则向当前栏目插入一篇文章
+$article['title']='文章标题';
+$article['content']='文章内容';
+$a=ainsert($article);
+echo($a);
+?&gt;</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	注意:时间字段须使用strtotime格式化成unix时间戳后存入数据库
+</p>
+<p>
+	多选字段请使用json_encode格式化后存入数据库
+</p>
+<p>
+	<br />
+</p>
+<p>
+	ainsert函数具体参数
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php  
+$article=array();
+$article['cid']='1';//栏目cid,如果不指定,则向当前栏目插入一篇文章
+$article['title']='文章标题';
+$article['content']='文章内容';
+$set['tablename']='' //插入表,默认为栏目的表
+$set['addslashes']=1;//是否转义字符,默认转义,在确保数据安全下可以关闭
+$set['check']=1;//文章字段检查,默认检查,在确认数据安全下可以关闭,增加数据插入性能
+$set['default']=1 //没插入的字段数值是否为默认值,默认为是.必须在check开启的情况下才有用
+$a=ainsert($article,$set);
+echo($a);
+?&gt;</pre>
+</p>
+<p>
+	<strong><span style="font-size:14px;">文章修改函数为aedit();参数与ainsert一致,
+只需多加$article['id']=1; </span></strong> 
+</p>
+<p>
+	<strong><span style="font-size:14px;">id是无法被更改的,	$article['id']=1;代表修改id为1的文章</span></strong> 
+</p>
+<p>
+	使用以下代码可以删除栏目cid=1中的id=2的文章
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php  
+adel(1,2);
+?&gt;</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

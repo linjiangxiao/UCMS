@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>图片自动缩略图-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>图片自动缩略图</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	后台自动缩略图请参考 <a href="57.html" target="_blank">/help/57.html</a> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	前台缩略图:
+</p>
+<p>
+	下载扩展文件: <a href="../images/thumb.zip" target="_blank">thumb.zip</a> 解压后,将thumb.php放到网站inc目录下
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">//列表页参考代码
+{{$set=array()}}
+{{$set['page']=page}}
+{{$articles=alist($set)}}
+{{loop $articles['list'] as $a}}
+	&lt;img src=&quot;{{class thumb}}{{$a['pic']|thumb(180,180)}}&quot;&gt;
+{{/loop}}
+
+//文章页参考代码
+&lt;img src=&quot;{{class thumb}}{{$article['pic']|thumb(180,180)}}&quot;&gt;
+
+//180,180代表缩略图宽度和高度
+
+//只支持本地文件,第三个参数支持缩略图生成质量 
+//如:{{$a['pic']|thumb(180,180,90)}} 建议选择50-100之间的数字,默认值90
+</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

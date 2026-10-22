@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>如何自定义logo、广告位等图片-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="34.html">常用功能</a>&gt;			<h1>如何自定义logo、广告位等图片</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	UCMS中默认模板中logo图片是不能在后台更改的,
+</p>
+<p>
+	代码在模板目录的header.php文件中
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;div class=&quot;fl&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;{{tempdir}}images/logo.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;</pre>
+</p>
+<p>
+	直接引用了模板目录下images文件夹中的logo.png图片.
+</p>
+<p>
+	如果想更换logo图片的话还需在ftp中上传图片文件,并修改模板中的图片路径.
+</p>
+<p>
+	利用ucms的站点变量功能,可以很方便的实现在后台直接上传logo.
+</p>
+<p>
+	(1).用超级管理员帐户登陆后台(只有超级管理员有配置栏目与站点变量的权限)
+</p>
+<p>
+	(2).点击右上角的栏目配置,在打开的网页中点击右上角的[站点变量].
+</p>
+<p>
+	<strong>(3).点击[+]增加变量 ,输入变量名为(logo图片),变量类型为</strong><strong>(</strong><strong>文件/图片上传</strong><span style="display:none;" id="__kindeditor_bookmark_start_7__"><strong></strong></span><strong>),点击保存按钮.注:UCMS在安装完成后会让您导入几个常用的变量,其中就包含了(logo图片)变量,如果在站点变量中已经存在了(logo图片),您可以直接跳过此步骤.</strong> 
+</p>
+<p>
+	(4).点击后台最左侧的站点设置,您已经可以看到(logo变量)出现在了表单中,在此上传您的logo图片,点击提交按钮保存logo.
+</p>
+<p>
+	(5).修改模板中的代码,让系统输出logo图片的路径.将
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;div class=&quot;fl&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;{{tempdir}}images/logo.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;</pre>
+</p>
+<p>
+	代码修改为
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;div class=&quot;fl&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;{{z(logo图片)}}&quot;&gt;&lt;/a&gt;&lt;/div&gt;</pre>
+</p>
+<p>
+	(6).清除缓存,访问您的网站,就能看到您在第4步中上传的logo已经出现在网页中了
+</p>
+<p>
+	<br />
+</p>
+<p>
+	您可以按照此步骤,将您模板中的广告位图片做到后台变量中,方便修改广告图片.
+</p>
+<p>
+	如您的广告图片需要添加链接,建议使用广告代码(变量类型为多行文本),直接在后台修改广告代码,并模板中输出广告代码
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>更多关于z()函数的用法,请点击</strong><a href="23.html" target="_blank"><strong>http://uuu.la/help/23.html</strong></a> 
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>UCMS模板制作助手-UCMS</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/marker.css" />
+	<style>
+		#marker0 {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="warp">
+		<div class="main_left">
+			<ul class="markermenu">
+				<li class="on">语法说明</li>
+				<li>站点变量</li>
+				<li>栏目变量</li>
+				<li>文章调用</li>
+				<li>文章页面</li>
+				<li>常用代码</li>
+				<a class="markersetting">设置</a>
+			</ul>
+			<div class="marker_setdiv">
+				模板标签: <input type="text" maxlength="10" class="template_tag_input" id="template_start_tag" value="{{"
+					placeholder="开始标签">
+				<input type="text" maxlength="10" class="template_tag_input" id="template_end_tag" value="}}"
+					placeholder="结束标签"> <input type="button" value="保存" id="savetags"> <input type="button" value="取消"
+					id="cancel_tags">
+			</div>
+			<textarea id="code"></textarea>
+			<!-- 语法说明 -->
+			<div id="marker0" class="markerarea">
+				<p class="markertitle">字符串/函数</p>
+				<input type="button" value="字符串输出" class="markerbutton textbutton" rel=0_1>
+				<input type="button" value="变量赋值" class="markerbutton textbutton" rel=0_2>
+				<input type="button" value="变量输出" class="markerbutton textbutton" rel=0_3>
+				<input type="button" value="函数使用" class="markerbutton textbutton" rel=0_4>
+				<input type="button" value="函数并行使用" class="markerbutton textbutton" rel=0_5>
+				<input type="button" value="字符串转义说明" class="markerbutton textbutton" rel=0_6>
+				<p class="markertitle">语法</p>
+				<input type="button" value=" if 判断" class="markerbutton textbutton" rel=0_7>
+				<input type="button" value="loop 循环" class="markerbutton textbutton" rel=0_8>
+				<input type="button" value="file 模板文件引用" class="markerbutton textbutton" rel=0_9>
+				<input type="button" value="class 功能文件引用" class="markerbutton textbutton" rel=0_15>
+				<input type="button" value="// 注释" class="markerbutton textbutton" rel=0_14>
+				<p class="markertitle">系统标签</p>
+				<input type="button" value="首页网址 homeurl" class="markerbutton textbutton" rel=0_10>
+				<input type="button" value="域名 host" class="markerbutton textbutton" rel=0_11>
+				<input type="button" value="安装目录 ucmsdir" class="markerbutton textbutton" rel=0_12>
+				<input type="button" value="模板目录 tempdir" class="markerbutton textbutton" rel=0_13>
+				<p class="markertitle">说明</p>
+				<span>
+					UCMS模板语法使用{{开始}}结束，并且需要在同一行中。模板文件中支持使用php语法。<br>
+					默认模板目录为template，手机站模板位于template/m，如您需要自定义404页面，请在模板目录下创建404.php文件。<br>
+					<em>注意:1.4.7开始模板标签从{}更改为{{}}</em>
+
+					<br>
+				</span>
+			</div>
+			<!-- 站点变量 -->
+			<div id="marker1" class="markerarea">
+				<p class="markertitle">调用站点变量</p>
+				变量名:
+				<input type="text" value="" name="strname" placeholder="" id="sitevarname">
+				<input type="button" value="生成" class="markerbutton" rel=1_1>
+
+
+
+
+				<p class="markertitle">常用方法</p>
+
+				<input type="button" value="站点标题 / 关键字 / 描述" class="markerbutton textbutton" rel=1_3>
+				<input type="button" value="获取站点变量值,不输出" class="markerbutton textbutton" rel=1_4>
+				<input type="button" value="只输出站点变量前10个字符" class="markerbutton textbutton" rel=1_5>
+				<input type="button" value="勾选框变量判断" class="markerbutton textbutton" rel=1_7>
+				<input type="button" value="多图输出" class="markerbutton textbutton" rel=1_8>
+
+				<input type="button" value="单选框/列表框/文章单选框变量获取相应的文章" class="markerbutton textbutton" rel=1_9>
+				<input type="button" value="更改站点标题" class="markerbutton textbutton" rel=1_2>
+
+				<p class="markertitle">说明</p>
+				调用站点变量前请先在后台添加相应的变量
+			</div>
+			<!-- 栏目变量 -->
+			<div id="marker2" class="markerarea">
+				<p class="markertitle">调用当前栏目变量</p>
+				变量名:
+				<input type="text" name="strname" value="" placeholder="" id="channelvarname">
+				<input type="button" value="生成" class="markerbutton" rel=2_1>
+				<p class="markertitle">调用其他栏目的变量或首页调用栏目变量</p>
+				变量名:
+				<input type="text" name="strname" value="" placeholder="" id="otherchannelvarname">
+				栏目名或cid:
+				<input type="text" name="cname" value="" placeholder="" id="cname">
+				<input type="button" value="生成" class="markerbutton" rel=2_2>
+
+
+
+
+				<p class="markertitle">常用方法</p>
+				<input type="button" value="栏目标题 / 关键字 / 描述" class="markerbutton textbutton" rel=2_11>
+				<input type="button" value="获取栏目变量值,不输出" class="markerbutton textbutton" rel=2_3>
+				<input type="button" value="只输出变量前10个字符" class="markerbutton textbutton" rel=2_4>
+				<input type="button" value="勾选框变量判断" class="markerbutton textbutton" rel=2_5>
+				<input type="button" value="多图输出" class="markerbutton textbutton" rel=2_6>
+				<input type="button" value="单选框/列表框/文章单选框变量获取相应的文章" class="markerbutton textbutton" rel=2_7>
+				<input type="button" value="多选框/文章多选框变量获取相应的文章" class="markerbutton textbutton" rel=2_9>
+				<input type="button" value="获取'公司简介'栏目下的'内容'变量,并截取前200个字符" class="markerbutton textbutton" rel=2_8>
+				<input type="button" value="更改栏目标题" class="markerbutton textbutton" rel=2_10>
+
+				<p class="markertitle">说明</p>
+				调用栏目变量前请先在后台添加相应的变量
+
+
+			</div>
+			<!-- 文章列表调用 -->
+			<div id="marker3" class="markerarea">
+				<p class="markertitle">文章调用代码生成</p>
+				<table>
+					<tr>
+						<td width=100>栏目名或cid:</td>
+						<td><input type="text" value="" name="cname" placeholder="" id="cname_3">
+							不填则为当前栏目,首页则为所有默认文章表的栏目</td>
+					</tr>
+					<tr>
+						<td>文章数量:</td>
+						<td><input type="text" value="" name="temppage_size" placeholder="" id="temppage_size">
+							不填则为后台默认填写的数量</td>
+					</tr>
+					<tr>
+						<td>列表页分页调用:</td>
+						<td valign=><input type="checkbox" id="pagelist" style="vertical-align:text-top; margin-top:0;">
+							勾选后会输出分页标签,一般用于分页模板中</td>
+					</tr>
+					<tr>
+						<td>列表缓存时间:</td>
+						<td><input type="text" value="0" placeholder="" id="listcachetime"> 缓存时间,单位秒,此次取出的数据将被缓存直到数据过期
+						</td>
+					</tr>
+					<tr>
+						<td>调取的字段:</td>
+						<td><input type="text" value="*" placeholder="" id="articlecolumn">
+							默认为*(全部),为了提升性能建议只取出所需要的列.例id,title</td>
+					</tr>
+					<tr>
+						<td>排序方式:</td>
+						<td><input type="text" value="" placeholder="" id="articleorder"> 文章排序方式,不填写则为后台设置的排序.例:aorder
+							desc,id desc</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="button" value="生成" class="markerbutton" rel="3_1" style="width:120px;"></td>
+					</tr>
+				</table>
+
+
+
+				<p class="markertitle">查询条件<em>(放在$articles=alist($set)之前)</em></p>
+				<input type="button" value="查询 id=1 的文章" class="markerbutton textbutton" rel=3_2>
+				<input type="button" value="查询id等于 1或2或3 的文章" class="markerbutton textbutton" rel=3_3>
+				<input type="button" value="某个分类下的文章" class="markerbutton textbutton" rel=3_4>
+				<input type="button" value="分类并且包含子分类" class="markerbutton textbutton" rel=3_5>
+				<input type="button" value="查询出 id不等于1 的文章" class="markerbutton textbutton" rel=3_6>
+				<input type="button" value="查询出 id不等于1或2或3 的文章" class="markerbutton textbutton" rel=3_7>
+				<input type="button" value="查询出多选字段类中的文章" class="markerbutton textbutton" rel=3_8>
+				<input type="button" value="查询出勾选的文章" class="markerbutton textbutton" rel=3_10>
+				<input type="button" value="查询图片不为空的文章" class="markerbutton textbutton" rel=3_15>
+				<input type="button" value="文章搜索" class="markerbutton textbutton" rel=3_12>
+				<input type="button" value="自定义查询条件" class="markerbutton textbutton" rel=3_9>
+				<input type="button" value="不需要查询子栏目文章" class="markerbutton textbutton" rel=3_26>
+
+				<p class="markertitle">样式控制参数<em>(放在$articles=alist($set)之前)</em></p>
+				<input type="button" value="输出文章序号" class="markerbutton textbutton" rel=3_14>
+				<input type="button" value="第一篇文章加上on样式" class="markerbutton textbutton" rel=3_17>
+				<input type="button" value="每3篇文章输出on样式" class="markerbutton textbutton" rel=3_18>
+				<input type="button" value="文章id等于 5 的输出on样式" class="markerbutton textbutton" rel=3_19>
+
+				<p class="markertitle">其他参数<em>(放在$articles=alist($set)之前)</em></p>
+				<input type="button" value="查询第10条开始的文章" class="markerbutton textbutton" rel=3_11>
+				<input type="button" value="指定文章网址的域名" class="markerbutton textbutton" rel=3_13>
+				<input type="button" value="指定文章的数据库表名" class="markerbutton textbutton" rel=3_16>
+
+				<p class="markertitle">常用方法</p>
+				<input type="button" value="日期格式化" class="markerbutton textbutton" rel=3_20>
+				<input type="button" value="文本截断" class="markerbutton textbutton" rel=3_21>
+				<input type="button" value="正则获取内容字段第一张图片" class="markerbutton textbutton" rel=3_25>
+				<input type="button" value="查询默认表中最新的15篇文章" class="markerbutton textbutton" rel=3_22>
+				<input type="button" value="查询指定栏目最新的15篇文章" class="markerbutton textbutton" rel=3_23>
+				<input type="button" value="循环前4个文章栏目的文章" class="markerbutton textbutton" rel=3_24>
+				<input type="button" value="文章列表调用栏目名" class="markerbutton textbutton" rel=3_27>
+
+				<p class="markertitle">说明</p>
+				输出字段前请确保已在栏目中添加了相应的字段
+
+			</div>
+
+
+
+			<!-- 文章页面 -->
+			<div id="marker4" class="markerarea">
+
+				<p class="markertitle">文章页常用代码</p>
+				<input type="button" value="查询当前文章" class="markerbutton textbutton" rel=4_1>
+				<input type="button" value="文章页 标题/描述/关键词" class="markerbutton textbutton" rel=4_2>
+				<input type="button" value="文章内容" class="markerbutton textbutton" rel=4_3>
+				<input type="button" value="日期格式化输出" class="markerbutton textbutton" rel=4_4>
+				<input type="button" value="多图输出" class="markerbutton textbutton" rel=4_5>
+				<input type="button" value="TAG标签输出" class="markerbutton textbutton" rel=4_6>
+				<input type="button" value="获取单选框/列表框/文章单选字段对应的文章" class="markerbutton textbutton" rel=4_7>
+				<input type="button" value="获取多选框/文章多选字段对应的文章" class="markerbutton textbutton" rel=4_8>
+				<input type="button" value="获取文章对应的管理员帐号/昵称" class="markerbutton textbutton" rel=4_9>
+				<input type="button" value="文章点击量" class="markerbutton textbutton" rel=4_10>
+				<input type="button" value="上一篇下一篇" class="markerbutton textbutton" rel=4_11>
+				<p class="markertitle">说明</p>
+				输出字段前请确保已在栏目中添加了相应的字段, 查看更多<a href="/help/28.html">alist参数</a>
+			</div>
+
+			<!-- 常用代码 -->
+			<div id="marker5" class="markerarea">
+				<p class="markertitle">导航</p>
+				<input type="button" value="导航栏" class="markerbutton textbutton" rel=5_1>
+				<input type="button" value="下属栏目导航栏" class="markerbutton textbutton" rel=5_2>
+				<input type="button" value="栏目列表" class="markerbutton textbutton" rel=5_3>
+				<input type="button" value="当前栏目cid" class="markerbutton textbutton" rel=5_14>
+				<input type="button" value="获取栏目网址" class="markerbutton textbutton" rel=5_4>
+				<input type="button" value="当前位置(面包屑导航)" class="markerbutton textbutton" rel=5_5>
+				<p class="markertitle">栏目</p>
+				<input type="button" value="获取当前栏目信息" class="markerbutton textbutton" rel=5_15>
+				<input type="button" value="父栏目信息" class="markerbutton textbutton" rel=5_16>
+				<input type="button" value="顶级栏目信息" class="markerbutton textbutton" rel=5_17>
+				<input type="button" value="其他栏目信息" class="markerbutton textbutton" rel=5_18>
+				<p class="markertitle">资源</p>
+				<input type="button" value="引用模板文件" class="markerbutton textbutton" rel=5_6>
+				<input type="button" value="引用样式文件" class="markerbutton textbutton" rel=5_7>
+				<input type="button" value="引用脚本文件" class="markerbutton textbutton" rel=5_8>
+				<input type="button" value="引用图片文件" class="markerbutton textbutton" rel=5_9>
+				<input type="button" value="uri 站内网址链接" class="markerbutton textbutton" rel=5_13>
+				<p class="markertitle">文章</p>
+				<input type="button" value="文章增加" class="markerbutton textbutton" rel=5_10>
+				<input type="button" value="文章修改" class="markerbutton textbutton" rel=5_11>
+				<input type="button" value="文章删除" class="markerbutton textbutton" rel=5_12>
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script>
+		var _czc = _czc || [];
+	</script>
+	<script src="js/marker.js"></script>
+</body>
+
+</html>

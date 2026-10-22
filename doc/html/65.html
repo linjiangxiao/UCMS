@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台钩子功能-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;			<h1>后台钩子功能</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	后台钩子功能可以在不改动后台代码的情况下进行对一些常用功能的自定义.
+</p>
+<p>
+	如:设置文章标题的默认值,对文章标题长度判断.
+</p>
+<p>
+	1.4.3版本新增钩子动作组合,如:admin_hook(1,'addpost;editpost','SaveRomoteImg');
+</p>
+<p>
+	可以同时在文章新增和编辑是运行<span style="white-space:normal;">SaveRomoteImg</span> 
+</p>
+<p>
+	<span style="white-space:normal;">后台钩子代码保存在</span>ucms/admin_config.php中
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">//后台钩子动作列表
+//leftnav 左侧栏目导航循环时
+//index 文章列表页表格前
+//list 文章列表页读取文章列表前
+//listrow 文章列表页文章循环时
+//listrowaction 文章列表页文章循环时 操作框内(1.4.5新增)
+//listsearch 文章列表页搜索框(1.4.4新增)
+//listaction 文章列表页批量勾选提交(1.4.4新增)
+//add 文章添加页
+//addpost 文章添加提交页
+//addposted 文章添加成功时
+//edit 文章编辑页
+//editpost 文章编辑提交页
+//editposted 文章编辑成功后
+//delete 文章删除前(1.4.4新增)
+//deleted 文章删除后(1.4.4版本之前为del)
+//move 文章转移前(1.4.4新增)
+//moved 文章转移成功后(1.4.4版本之前为move)
+//stredited 变量编辑成功后</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">//使用方法说明  在后台访问栏目cid为1的栏目的列表页(index动作)时将会运行indexshow的函数 
+admin_hook(1,'index','indexshow');
+function indexshow() {
+	echo('hello');
+}
+
+//index 列表页显示id字段
+admin_hook(1,'index','listpage_show_id');
+function listpage_show_id() {
+	global $moudle;
+	$idmoudle[0]=array('mname'=&gt;'id','minfo'=&gt;'文章id','mkind'=&gt;1,'ifshowtemp'=&gt;'');
+	$moudle=array_merge($idmoudle,$moudle);
+}
+
+//leftnav 左侧栏目列表显示自定义文字,一般在子栏目右侧显示
+admin_hook(1,'leftnav','leftnav_show');
+function leftnav_show() {
+	echo('  &lt;a href=&quot;/&quot;&gt;自定义文字&lt;/a&gt;');
+}
+
+//list 修改列表页文章查询条件
+admin_hook(2,'list','list_config');
+function list_config() {
+	global $where;
+	$where['where']['id']=1;//只显示id为1的文章 其他参数可以查看http://uuu.la/help/28.html
+}
+
+//listrow 列表页循环时修改文章字段内容
+admin_hook(1,'listrow','listrow_config');
+function listrow_config() {
+	global $article;
+	$article['title']='啊';
+}
+
+//listrow 列表页循环时显示在操作框内的信息
+admin_hook(1,'listrowaction','listrowaction_visit');
+function listrowaction_visit() {
+	global $article;
+	echo('&lt;a href=&quot;'.$article['link'].'&quot;&gt;浏览&lt;/a&gt; ');
+}
+
+//add 文章添加页修改字段默认值 
+admin_hook(1,'add','add_rand_value');
+function add_rand_value() {
+	global $moudle;
+	//标题默认值改成一个随机字符
+	foreach($moudle as $key=&gt;$val) {
+		if($val['mname']=='title') {
+			$moudle[$key]['strdefault']=rand(999,9999);
+		}
+	}
+}
+
+//addpost 文章提交后
+admin_hook(1,'addpost','addpost_config');
+function addpost_config() {
+	//判断提交的文章标题不能为空
+	if(empty($_POST['title'])) {
+		adminmsg('','标题不能为空');
+	}
+}
+
+//addpost 文章插入成功后动作
+admin_hook(1,'addposted','addposted_config');
+function addposted_config() {
+	global $thisid;
+	//$thisid为插入成功后的文章id,可以对此文章进行其他相应的操作
+}
+
+//对多个栏目进行钩子 列出所有栏目 检查栏目标题变量为空的栏目,显示提示
+$query = $GLOBALS['db'] -&gt; query(&quot;SELECT * FROM &quot;.tableex('channel').&quot; order by corder asc&quot;);
+$all_category_hook = $GLOBALS['db'] -&gt; fetchall($query);
+foreach($all_category_hook as $key=&gt;$val) {
+	$cname=s('栏目标题',$val['cid']);
+	if(empty($cname)) {
+		admin_hook($val['cid'],'index','title_tips');
+	}
+}
+function title_tips() {
+	echo('栏目标题为空,请修改');
+}</pre>
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

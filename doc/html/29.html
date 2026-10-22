@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>输出文章列表分页-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;<a href="27.html">输出文章列表</a>&gt;			<h1>输出文章列表分页</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	在栏目地址或分页地址输出文章列表后都会进行分页,
+</p>
+<p>
+	如果要用到分页,alist函数参数中必须带上['page'],如下所示
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+unset($set);
+if (!isset($_GET['page'])){
+    $set['page']=1;//默认为第一页
+}else{
+    $set['page']=intval($_GET['page']);
+}
+//1.3.5版本开始支持使用$set['page']='page';可以自动获取当前页码,无需判断
+$articles=alist($set);
+foreach ($articles['list'] as $a) 
+{
+	echo('&lt;a href=&quot;'.$a['link'].'&quot;&gt;'.$a['title'].'&lt;/a&gt;');
+}
+?&gt;</pre>
+</p>
+<p>
+	<strong>输出以上文章列表后,使用以下代码进行分页的输出</strong> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">&lt;?php
+//正常分页代码
+pagelist($articles);
+//自动分页(如首页或单页的栏目),会自动对当前网址使用分页
+pagelist($articles,1);
+//自定义分页网址
+$articles['pageurl']='/123/(page).html';
+pagelist($articles);
+?&gt;</pre>
+</p>
+<p>
+	<strong>分页自定义</strong> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$pages=pagelist($articles,,1)}}
+{{loop $pages as $page}}
+	{{if $page['title']=='&amp;lt;&amp;lt;'}}
+		第一页:{{$page['url']}}&lt;br&gt;
+	{{elseif  $page['title']=='&amp;lt;'}}
+		上一页:{{$page['url']}}&lt;br&gt;
+	{{elseif  $page['title']=='&amp;gt;'}}
+		下一页:{{$page['url']}}&lt;br&gt;
+	{{elseif  $page['title']=='&amp;gt;&amp;gt;'}}
+		最后一页:{{$page['url']}}&lt;br&gt;
+	{{else}}
+	{{/if}}
+{{/loop}}
+
+当前一共有文章 {{$articles['articlecount']}} 当前页数:{{$articles['page']}} 总共页数:{{$articles['pages']}}</pre>
+</p>
+<p>
+	默认输出的分页html代码格式如下,您可以按此编写css
+</p>
+<p>
+	<img src="../images/8a2babe06.png" alt="" /> 
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+#code{
+	width:666px;
+	height:150px;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	border-radius: 3px;
+	font-size:12px;
+	line-height:20px;
+	padding:5px;
+	margin-bottom:5px;
+	letter-spacing:1px;
+	font-family: "Microsoft YaHei", "Microsoft JhengHei", "SF UI Display", ".PingFang SC", "PingFang SC", "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Helvetica Neue", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB"
+
+}
+
+.markermenu{
+	margin-bottom:15px;
+	border-bottom:1px solid #ccc;
+	padding-bottom:10px;
+}
+.markermenu li{
+	padding:5px 5px;
+	line-height:22px;
+	margin-right:10px;
+	font-size:14px;
+	display:inline-block;
+	cursor:pointer;
+}
+.markermenu li.on{
+	border-bottom:2px solid #1c86d1;
+}
+
+.markerarea{
+	display:none;
+}
+
+.markerarea .markertitle{
+	line-height:20px;
+	border-bottom:1px solid #ccc;
+	margin-top:20px;
+	margin-bottom:10px;
+	font-weight:bold;
+	width:90%;
+}
+.markerarea .markertitle em{
+	font-weight:normal;
+}
+.markerarea input{
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	height: 18px;
+	padding: 4px;
+}
+.markerarea .markerbutton{
+	border-radius: 3px;
+	height: 28px;
+	color:#fff;
+	padding:5px 15px;
+	background-color: #0074cc;
+	cursor:pointer;
+}
+.markerarea .textbutton{
+	border: 1px solid #ccc;
+	background-color: #fff;
+	color:#333333;
+	margin:5px 5px 0 0;
+}
+.markerarea .textbutton:hover{
+	border: 1px solid #0074cc;
+	color:#0074cc;
+}
+.markerarea td{
+	height:35px;
+}
+.markerarea span{
+	line-height:20px;
+}
+.markerarea span em{
+	color:#FF6600;
+}
+.markersetting{
+	float:right;
+	color:#0088cc;
+	margin-top:10px;
+	margin-right:14px;
+	font-size:12px;
+}
+.marker_setdiv{
+	display:none;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	padding-right: 14px;
+	text-align:right;
+}
+.template_tag_input{
+	padding:0 3px;
+	width:60px;
+	height:20px;
+}
+#template_end_tag{
+	text-align:right;
+}
+#savetags{
+	margin:0 5px;
+	width:60px;
+	height:24px;
+	color:#fff;
+	background: #1c86d1;
+	border:0;
+	cursor:pointer;
+}
+#cancel_tags{
+	width:50px;
+	height:24px;
+	border:0;
+	cursor:pointer;
+}

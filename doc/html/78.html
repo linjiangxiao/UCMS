@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>如何转移网站-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="1.html">安装配置</a>&gt;			<h1>如何转移网站</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	<strong>转到子目录:</strong> 
+</p>
+<p>
+	<strong> </strong>文件转移到相应的目录下,
+</p>
+<p>
+	修改inc/config.php文件内的&nbsp;SystemDir参数 为当前的目录名,如:/abc/
+</p>
+<p>
+	图片路径等需要手动进入数据库修改,如:将/uploadfile/ 修改为 /abc/uploadfile/
+</p>
+<p>
+	子目录不支持伪静态,需要将UrlRewrite参数改为0(未开启则无需修改)
+</p>
+<p>
+	刷新后台缓存
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>转到另外空间:</strong> 
+</p>
+<p>
+	文件传到相应的空间,
+</p>
+<p>
+	mysql数据库如需转移,则使用phpmyadmin等工具导入到新的数据库中,并修改inc/config.php内对应的数据库链接
+</p>
+<p>
+	<span style="white-space:normal;">如您在安装时绑定了域名,则需要修改</span><span style="white-space:normal;">inc/config.php文件内的</span><span style="white-space:normal;">SystemDomain</span><span style="white-space:normal;">参数值为新使用的域名</span>
+</p>
+<p>
+	<span style="white-space:normal;"> 刷新后台缓存</span> 
+</p>
+<p>
+	<span style="white-space:normal;"><br />
+</span>
+</p>
+<p>
+	<br />
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

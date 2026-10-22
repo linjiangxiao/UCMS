@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>获取栏目、父栏目、顶级栏目的信息-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>获取栏目、父栏目、顶级栏目的信息</h1>
+		</div>
+		<div class="article_content">
+		<pre class="brush:php prettyprint lang-php" data-language="php">ucms1.4.6版本:
+当前栏目的栏目名 {{i(name)}} 
+当前栏目的网址 {{i(url)}} 
+当前栏目的cid {{i(cid)}}
+
+当前栏目的父栏目cid {{i(fid)}}
+当前栏目的父栏目网址 {{i(fid)|i(url,this)}}
+当前栏目的父栏目名字 {{i(fid)|i(name,this)}}
+
+当前栏目的顶级栏目cid {{i(topfid)}}
+当前栏目的顶级栏目的栏目名 {{i(topfid)|i(name,this)}}
+当前栏目的顶级栏目的栏目变量调用 {{i(topfid)|s(栏目描述,this)}}
+
+需要在首页或其他栏目调用某个栏目配置则使用 {{i(url,***)}} ***为栏目的cid或栏目名
+
+
+
+
+
+ucms1.4.6之前的版本参考以下代码:
+
+当前栏目信息:
+{{$channel=getchannelcache(`cid)}}
+栏目名:{{$channel['cname']}}&lt;br&gt;
+栏目cid:{{$channel['cid']}}&lt;br&gt;
+父栏目cid:{{$channel['fid']}}
+如需要获取另外栏目信息 把`cid换成另外栏目的cid即可
+此处获得的cname是后台栏目名,与栏目变量中的栏目标题有区别
+
+
+获取当前父栏目信息:
+{{$channel=getchannelcache(`cid)}}
+{{$channel2=getchannelcache($channel['fid'])}}
+{{if $channel2}}
+    父栏目名:{{$channel2['cname']}}&lt;br&gt;
+    父栏目cid:{{$channel2['cid']}}&lt;br&gt;
+{{else}}
+    没有父栏目
+{{/if}}
+
+{{$channel=get_top_channel(`cid)}}
+顶级栏目名:{{$channel['cname']}}&lt;br&gt;
+顶级栏目cid:{{$channel['cid']}}&lt;br&gt;
+&lt;?php
+function get_top_channel($cid) {
+	$i=0;
+	while(true) {
+		$i++;
+		if($i&gt;50) {
+			Return false;
+		}
+		$top_channel=getchannelcache($cid);
+		if($top_channel) {
+			if($top_channel['fid']==0) {
+				Return $top_channel;
+			}else {
+				$cid=$top_channel['fid'];
+			}
+		}else {
+			Return false;
+		}
+	}
+}
+?&gt;
+
+
+
+</pre>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

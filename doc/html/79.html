@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>自定义百度ueditor编辑器字段-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="2.html">后台使用说明</a>&gt;<a href="21.html">字段介绍</a>&gt;<a href="76.html">自定义字段</a>&gt;			<h1>自定义百度ueditor编辑器字段</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	下载Ueditor&nbsp;php utf-8版本&nbsp;<a href="http://ueditor.baidu.com/website/download.html" target="_blank">http://ueditor.baidu.com/website/download.html</a> 
+</p>
+<p>
+	将安装包解压到后台img目录下&nbsp;utf8-php更名为ueditor
+</p>
+<p>
+	<br />
+</p>
+<p>
+	以下代码保存到后台目录下admin_config.php文件内
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">function ucms_ueditor($action='',$name='',$value='') {
+    if($action=='output') {
+        echo('&lt;script id=&quot;'.$name.'&quot; name=&quot;'.$name.'&quot; type=&quot;text/plain&quot;&gt;'.$value.'&lt;/script&gt;');
+        echo('&lt;script type=&quot;text/javascript&quot; src=&quot;img/ueditor/ueditor.config.js&quot;&gt;&lt;/script&gt;');
+        echo('&lt;script type=&quot;text/javascript&quot; src=&quot;img/ueditor/ueditor.all.js&quot;&gt;&lt;/script&gt;');
+        echo('&lt;script type=&quot;text/javascript&quot;&gt;var ue = UE.getEditor(\''.$name.'\');&lt;/script&gt;');
+    }
+    if($action=='input') {
+        if(isset($_POST[$name])) {
+            Return $_POST[$name];
+        }
+        Return '';
+    }
+    if($action=='show') {
+        Return htmlspecialchars($value);
+    }
+}</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	后台栏目变量或栏目字段&nbsp;增加一个自定义字段&nbsp;修改该字段配置&nbsp;输入函数名&nbsp;ucms_ueditor&nbsp;即可
+</p>		</div>
+		<ul class="article_other">
+				</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>

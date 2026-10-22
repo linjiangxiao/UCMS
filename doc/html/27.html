@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>输出文章列表-UCMS</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+<body>
+
+<div class="warp">
+	<div class="main_left">
+		<div class="article_nav">
+			<a href="../index.html">帮助中心</a>&gt;<a href="3.html">模板制作指南</a>&gt;			<h1>输出文章列表</h1>
+		</div>
+		<div class="article_content">
+		<p>
+	UCMS使用alist函数输出文章列表,以下代码可以循环输出当前栏目下相应数量的文章(排序与文章数量在后台可以设置)
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$articles=alist()}}
+{{loop $articles['list'] as $a}}
+	&lt;li&gt;&lt;a href=&quot;{{$a['link']}}&quot; target=&quot;_blank&quot;&gt;{{$a['title']}}&lt;/a&gt;&lt;/li&gt;
+{{/loop}}
+</pre>
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong>使用以下代码可以输出栏目名为[测试栏目]下的10篇文章</strong>,点击查看更多<a href="28.html" target="_blank">关于alist()函数参数的用法</a> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}//初始化参数
+{{$set['cid']=测试栏目}}
+{{$set['pagesize']=10}}
+{{$articles=alist($set)}}
+{{loop $articles['list'] as $a}}
+	&lt;li&gt;&lt;a href=&quot;{{$a['link']}}&quot; target=&quot;_blank&quot;&gt;{{$a['title']}}&lt;/a&gt;&lt;/li&gt;
+{{/loop}}</pre>
+</p>
+<p>
+	<strong>使用a()函数可以只获取一篇文章的内容,以下代码可以在文章页中使用,获取一篇文章</strong> 
+</p>
+<p>
+	<pre class="brush:php prettyprint lang-php" data-language="php">{{$set=array()}}
+{{$set['where']['id']=intval($_GET['id'])}}
+{{$article=a($set)}}
+{{if !$article}}
+	{{notfound();}}
+{{/if}}
+{{$article['title']}}</pre>
+</p>		</div>
+		<ul class="article_other">
+		<li><a href="28.html" target="_blank">alist函数参数详细介绍</a></li><li><a href="29.html" target="_blank">输出文章列表分页</a></li><li><a href="30.html" target="_blank">同时获取多个栏目的文章列表</a></li><li><a href="63.html" target="_blank">文章随机调用</a></li><li><a href="66.html" target="_blank">获取栏目文章总数</a></li><li><a href="73.html" target="_blank">文章列表样式输出</a></li><li><a href="81.html" target="_blank">文章排序</a></li>		</ul>
+	</div>
+	
+</div>
+
+<script src="../js/prettify.js"></script>
+<script>
+$(window).load(function(){
+     prettyPrint();
+})
+</script>
+</body>
+</html>
